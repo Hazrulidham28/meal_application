@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meal_application/screen/filter_screen.dart';
 
+//class widget for drawer
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key});
 
@@ -46,18 +47,24 @@ class MainDrawer extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
+          //widget function to build list tile
+          //pass 3 parameter to function
           buildListTile(
             'Meals',
             Icons.restaurant,
             () {
-              Navigator.of(context).pushNamed('/');
+              Navigator.of(context).pushReplacementNamed('/');
             },
           ),
           buildListTile(
             'Filters',
             Icons.settings,
             () {
-              Navigator.of(context).pushNamed(FilterScreen.routeName);
+              //use pushreplacement to avoid stacking of pages
+              //its not keep previous page
+              //good for login pages
+              Navigator.of(context)
+                  .pushReplacementNamed(FilterScreen.routeName);
             },
           ),
         ],
