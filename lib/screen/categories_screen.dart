@@ -6,6 +6,7 @@ import '../widgets/category_item.dart';
 class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //remove scaffold because it use from tabbar's scaffold
     return GridView(
       padding: const EdgeInsets.all(25),
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
