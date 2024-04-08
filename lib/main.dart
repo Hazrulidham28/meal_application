@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meal_application/categories_screen.dart';
-import 'package:meal_application/category_meals_screen.dart';
+import 'package:meal_application/screen/categories_screen.dart';
+import 'package:meal_application/screen/category_meals_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
               bodyMedium: const TextStyle(
                 color: Color.fromRGBO(20, 51, 51, 1),
               ),
-              titleMedium: TextStyle(
+              titleMedium: const TextStyle(
                 fontSize: 20,
                 fontFamily: 'RobotoCondensed',
                 fontWeight: FontWeight.bold,

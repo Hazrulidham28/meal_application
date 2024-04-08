@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meal_application/categories_screen.dart';
-import 'package:meal_application/category_meals_screen.dart';
+import 'package:meal_application/screen/categories_screen.dart';
+import 'package:meal_application/screen/category_meals_screen.dart';
 
 class CategoryItem extends StatelessWidget {
   final String Id;
@@ -8,7 +8,7 @@ class CategoryItem extends StatelessWidget {
   final Color color;
 
   // ignore: use_key_in_widget_constructors
-  CategoryItem(this.title, this.color, this.Id);
+  const CategoryItem(this.title, this.color, this.Id);
 
   void selectCategory(BuildContext ctx) {
     //class build into flutter to navigate into screen
