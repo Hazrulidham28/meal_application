@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:meal_application/screen/categories_screen.dart';
 import 'package:meal_application/screen/favourite_screen.dart';
 import 'package:meal_application/widgets/main_drawer.dart';
+import 'package:meal_application/models/meal.dart';
 
 class TabsScreen extends StatefulWidget {
-  const TabsScreen({super.key});
+  final List<Meal> favouriteMeals;
+  const TabsScreen(this.favouriteMeals);
 
   @override
   State<TabsScreen> createState() => _TabScreenState();
@@ -12,17 +14,30 @@ class TabsScreen extends StatefulWidget {
 
 class _TabScreenState extends State<TabsScreen> {
   //list of maps
-  final List<Map<String, Object>> _pages = [
-    {'page': CategoriesScreen(), 'title': 'Categoreis'},
-    {'page': FavouritesScreen(), 'title': 'Your Favourite'},
-  ];
+  List<Map<String, Object>>? _pages;
   int _selectedPageIndex = 0;
+
   void _selectPage(int index) {
     //manage widgets to be rendered
 
     setState(() {
       _selectedPageIndex = index;
     });
+  }
+
+//run before build executed
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    _pages = [
+      {'page': CategoriesScreen(), 'title': 'Categoreis'},
+      {
+        'page': FavouritesScreen(widget.favouriteMeals),
+        'title': 'Your Favourite'
+      },
+    ];
+    super.initState();
   }
 
   @override
@@ -56,12 +71,12 @@ class _TabScreenState extends State<TabsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(_pages[_selectedPageIndex]['title'].toString()),
+        title: Text(_pages![_selectedPageIndex]['title'].toString()),
       ),
       drawer: Drawer(
         child: MainDrawer(),
       ),
-      body: _pages[_selectedPageIndex]['page'] as Widget,
+      body: _pages![_selectedPageIndex]['page'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
         unselectedItemColor: Colors.black,
