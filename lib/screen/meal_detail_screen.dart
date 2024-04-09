@@ -81,6 +81,14 @@ class MealDetailScreen extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          //pop remove current screen and go back to previous screen
+          Navigator.of(context).pop(mealId);
+          //.pop parameter will pass the mealId
+        },
+        child: const Icon(Icons.delete),
+      ),
       appBar: AppBar(
         title: Text(
           '${selectedMeal.title}',
